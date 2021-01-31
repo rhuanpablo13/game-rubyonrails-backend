@@ -14,7 +14,7 @@ create table monsters(
     name varchar(150)
 ) row_format=dynamic engine=innodb default charset=utf8;
 
-create table collected_coin(
+create table collected_coins(
     id int not null primary key auto_increment,
     user_id int not null,
     value_coin int not null,
@@ -63,15 +63,15 @@ insert into trophy values (2, 'bronze');
 insert into trophy values (3, 'latao');
 insert into trophy values (5, 'madeira');
 
-insert into collected_coin values (0, 0, 1);
-insert into collected_coin values (1, 0, 2);
-insert into collected_coin values (2, 0, 5);
-insert into collected_coin values (3, 0, 2);
+insert into collected_coins values (0, 0, 1);
+insert into collected_coins values (1, 0, 2);
+insert into collected_coins values (2, 0, 5);
+insert into collected_coins values (3, 0, 2);
 
-insert into collected_coin values (5, 1, 1);
-insert into collected_coin values (6, 1, 2);
-insert into collected_coin values (7, 1, 5);
-insert into collected_coin values (8, 1, 2);
+insert into collected_coins values (5, 1, 1);
+insert into collected_coins values (6, 1, 2);
+insert into collected_coins values (7, 1, 5);
+insert into collected_coins values (8, 1, 2);
 
 insert into killed_monster values (0, 0, 1);
 insert into killed_monster values (1, 0, 2);
