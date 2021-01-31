@@ -10,6 +10,7 @@ default: &default
   timeout: 5000
   username: root
   password: 123
+  encoding: utf8
 
 development:
   <<: *default

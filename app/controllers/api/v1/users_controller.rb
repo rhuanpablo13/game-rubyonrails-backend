@@ -5,17 +5,18 @@ module Api
 			# Listar todos os usuários
 			def index
 				users = User.order('name ASC');
-				render json: {status: 'SUCCESS', message:'Usuários carregados', data:users},status: :ok
+				render json: {status: 'SUCCESS', message:'Users loaded', data:users},status: :ok
 			end
 
 			# Listar usuário passando ID
 			def show
 				users = User.find(params[:id])
-				render json: {status: 'SUCCESS', message:'Loaded article', data:users},status: :ok
+				render json: {status: 'SUCCESS', message:'Loaded user', data:users},status: :ok
 			end
 
 			# Criar um novo usuário
 			def create
+				puts params
 				@users = User.new(params.permit(:name))
 				if @users.save
 					render json: {status: 'SUCCESS', message:'Saved user', data:@users},status: :ok

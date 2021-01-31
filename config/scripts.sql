@@ -1,93 +1,93 @@
-CREATE DATABASE GAME_DB_DEV;
---CREATE DATABASE GAME_DB_TEST;
---CREATE DATABASE GAME_DB_PROD;
+create database game_db_dev;
+--create database game_db_test;
+--create database game_db_prod;
 
-USE GAME_DB_DEV;
+use game_db_dev;
 
-CREATE TABLE USER(
-    ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    NAME VARCHAR(150)
-);
+create table users(
+    id int not null primary key auto_increment,
+    name varchar(150)
+) row_format=dynamic engine=innodb default charset=utf8;
 
-CREATE TABLE MONSTER(
-    ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    NAME VARCHAR(150)
-);
+create table monsters(
+    id int not null primary key auto_increment,
+    name varchar(150)
+) row_format=dynamic engine=innodb default charset=utf8;
 
-CREATE TABLE COLLECTED_COIN(
-    ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    USER_ID INT NOT NULL,
-    VALUE_COIN INT NOT NULL,
-    FOREIGN KEY (USER_ID) REFERENCES USER(ID)
-);
+create table collected_coin(
+    id int not null primary key auto_increment,
+    user_id int not null,
+    value_coin int not null,
+    foreign key (user_id) references users(id)
+) row_format=dynamic engine=innodb default charset=utf8;
 
-CREATE TABLE KILLED_MONSTER(
-    ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    USER_ID INT NOT NULL,
-    MONSTER_ID INT NOT NULL,
-    FOREIGN KEY (USER_ID) REFERENCES USER(ID),
-    FOREIGN KEY (MONSTER_ID) REFERENCES MONSTER(ID)
-);
+create table killed_monster(
+    id int not null primary key auto_increment,
+    user_id int not null,
+    monster_id int not null,
+    foreign key (user_id) references users(id),
+    foreign key (monster_id) references monsters(id)
+) row_format=dynamic engine=innodb default charset=utf8;
 
-CREATE TABLE DEATHS(
-    ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    USER_ID INT NOT NULL,
-    TIME_REG TIMESTAMP NOT NULL,
-    FOREIGN KEY (USER_ID) REFERENCES USER(ID)
-);
+create table deaths(
+    id int not null primary key auto_increment,
+    user_id int not null,
+    time_reg timestamp not null,
+    foreign key (user_id) references users(id)
+) row_format=dynamic engine=innodb default charset=utf8;
 
-CREATE TABLE TROPHY(
-    ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    NAME VARCHAR(45)
-);
+create table trophy(
+    id int not null primary key auto_increment,
+    name varchar(45)
+) row_format=dynamic engine=innodb default charset=utf8;
 
-CREATE TABLE USER_TROPHY(
-    ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    USER_ID INT NOT NULL,
-    TROPHY_ID INT NOT NULL,
-    FOREIGN KEY (USER_ID) REFERENCES USER(ID),
-    FOREIGN KEY (TROPHY_ID) REFERENCES TROPHY(ID)
-);
+create table user_trophy(
+    id int not null primary key auto_increment,
+    user_id int not null,
+    trophy_id int not null,
+    foreign key (user_id) references users(id),
+    foreign key (trophy_id) references trophy(id)
+) row_format=dynamic engine=innodb default charset=utf8; 
 
 
 
-INSERT INTO USERS VALUES (0, 'noob_master123');
-INSERT INTO USERS VALUES (1, 'isa_tocadocoelho');
+insert into users values (0, 'noob_master123');
+insert into users values (1, 'isa_tocadocoelho');
 
-INSERT INTO MONSTER VALUES (0, 'Turtle');
-INSERT INTO MONSTER VALUES (1, 'Bowser');
+insert into monsters values (0, 'turtle');
+insert into monsters values (1, 'bowser');
 
-INSERT INTO TROPHY VALUES (0, 'OURO');
-INSERT INTO TROPHY VALUES (1, 'PRATA');
-INSERT INTO TROPHY VALUES (2, 'BRONZE');
-INSERT INTO TROPHY VALUES (3, 'LATAO');
-INSERT INTO TROPHY VALUES (5, 'MADEIRA');
+insert into trophy values (0, 'ouro');
+insert into trophy values (1, 'prata');
+insert into trophy values (2, 'bronze');
+insert into trophy values (3, 'latao');
+insert into trophy values (5, 'madeira');
 
-INSERT INTO COLLECTED_COIN VALUES (0, 0, 1);
-INSERT INTO COLLECTED_COIN VALUES (1, 0, 2);
-INSERT INTO COLLECTED_COIN VALUES (2, 0, 5);
-INSERT INTO COLLECTED_COIN VALUES (3, 0, 2);
+insert into collected_coin values (0, 0, 1);
+insert into collected_coin values (1, 0, 2);
+insert into collected_coin values (2, 0, 5);
+insert into collected_coin values (3, 0, 2);
 
-INSERT INTO COLLECTED_COIN VALUES (5, 1, 1);
-INSERT INTO COLLECTED_COIN VALUES (6, 1, 2);
-INSERT INTO COLLECTED_COIN VALUES (7, 1, 5);
-INSERT INTO COLLECTED_COIN VALUES (8, 1, 2);
+insert into collected_coin values (5, 1, 1);
+insert into collected_coin values (6, 1, 2);
+insert into collected_coin values (7, 1, 5);
+insert into collected_coin values (8, 1, 2);
 
-INSERT INTO KILLED_MONSTER VALUES (0, 0, 1);
-INSERT INTO KILLED_MONSTER VALUES (1, 0, 2);
-INSERT INTO KILLED_MONSTER VALUES (2, 0, 1);
-INSERT INTO KILLED_MONSTER VALUES (3, 0, 2);
+insert into killed_monster values (0, 0, 1);
+insert into killed_monster values (1, 0, 2);
+insert into killed_monster values (2, 0, 1);
+insert into killed_monster values (3, 0, 2);
 
-INSERT INTO KILLED_MONSTER VALUES (5, 1, 1);
-INSERT INTO KILLED_MONSTER VALUES (6, 1, 2);
-INSERT INTO KILLED_MONSTER VALUES (7, 1, 2);
-INSERT INTO KILLED_MONSTER VALUES (8, 1, 2);
+insert into killed_monster values (5, 1, 1);
+insert into killed_monster values (6, 1, 2);
+insert into killed_monster values (7, 1, 2);
+insert into killed_monster values (8, 1, 2);
 
-INSERT INTO DEATHS VALUES (0, 0, SYSDATE());
-SELECT SLEEP(3);
-INSERT INTO DEATHS VALUES (1, 0, SYSDATE());
-SELECT SLEEP(3);
-INSERT INTO DEATHS VALUES (2, 1, SYSDATE());
+insert into deaths values (0, 0, sysdate());
+select sleep(3);
+insert into deaths values (1, 0, sysdate());
+select sleep(3);
+insert into deaths values (2, 1, sysdate());
 
-INSERT INTO USER_TROPHY VALUES (0, 0, 1);
-INSERT INTO USER_TROPHY VALUES (1, 1, 3);
+insert into user_trophy values (0, 0, 1);
+insert into user_trophy values (1, 1, 3);
