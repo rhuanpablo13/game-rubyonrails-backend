@@ -16,7 +16,7 @@ module Api
 
 			# Criar um novo death
 			def create
-				@death = Death.new(params.permit(:name))
+				@death = Death.new(death_params)
 				if @death.save
 					render json: {status: 'SUCCESS', message:'Saved death', data:@death},status: :ok
 				else
