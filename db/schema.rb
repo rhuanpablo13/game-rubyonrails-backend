@@ -35,11 +35,11 @@ ActiveRecord::Schema.define(version: 0) do
     t.string "name", limit: 150
   end
 
-  create_table "trophys", id: :integer, charset: "utf8", options: "ENGINE=InnoDB ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "trophies", id: :integer, charset: "utf8", options: "ENGINE=InnoDB ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "name", limit: 45
   end
 
-  create_table "user_trophys", id: :integer, charset: "utf8", options: "ENGINE=InnoDB ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "user_trophies", id: :integer, charset: "utf8", options: "ENGINE=InnoDB ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "trophy_id", null: false
     t.index ["trophy_id"], name: "trophy_id"
@@ -54,6 +54,6 @@ ActiveRecord::Schema.define(version: 0) do
   add_foreign_key "deaths", "users", name: "deaths_ibfk_1"
   add_foreign_key "killed_monsters", "monsters", name: "killed_monsters_ibfk_2"
   add_foreign_key "killed_monsters", "users", name: "killed_monsters_ibfk_1"
-  add_foreign_key "user_trophys", "trophys", name: "user_trophys_ibfk_2"
-  add_foreign_key "user_trophys", "users", name: "user_trophys_ibfk_1"
+  add_foreign_key "user_trophies", "trophies", name: "user_trophies_ibfk_2"
+  add_foreign_key "user_trophies", "users", name: "user_trophies_ibfk_1"
 end
