@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.index ["user_id"], name: "user_id"
   end
 
-  create_table "killed_monster", id: :integer, charset: "utf8", options: "ENGINE=InnoDB ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "killed_monsters", id: :integer, charset: "utf8", options: "ENGINE=InnoDB ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "monster_id", null: false
     t.index ["monster_id"], name: "monster_id"
@@ -35,11 +35,11 @@ ActiveRecord::Schema.define(version: 0) do
     t.string "name", limit: 150
   end
 
-  create_table "trophy", id: :integer, charset: "utf8", options: "ENGINE=InnoDB ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "trophys", id: :integer, charset: "utf8", options: "ENGINE=InnoDB ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "name", limit: 45
   end
 
-  create_table "user_trophy", id: :integer, charset: "utf8", options: "ENGINE=InnoDB ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "user_trophys", id: :integer, charset: "utf8", options: "ENGINE=InnoDB ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "trophy_id", null: false
     t.index ["trophy_id"], name: "trophy_id"
@@ -52,8 +52,8 @@ ActiveRecord::Schema.define(version: 0) do
 
   add_foreign_key "collected_coins", "users", name: "collected_coins_ibfk_1"
   add_foreign_key "deaths", "users", name: "deaths_ibfk_1"
-  add_foreign_key "killed_monster", "monsters", name: "killed_monster_ibfk_2"
-  add_foreign_key "killed_monster", "users", name: "killed_monster_ibfk_1"
-  add_foreign_key "user_trophy", "trophy", name: "user_trophy_ibfk_2"
-  add_foreign_key "user_trophy", "users", name: "user_trophy_ibfk_1"
+  add_foreign_key "killed_monsters", "monsters", name: "killed_monsters_ibfk_2"
+  add_foreign_key "killed_monsters", "users", name: "killed_monsters_ibfk_1"
+  add_foreign_key "user_trophys", "trophys", name: "user_trophys_ibfk_2"
+  add_foreign_key "user_trophys", "users", name: "user_trophys_ibfk_1"
 end
